@@ -1,0 +1,17 @@
+{
+    "comment_1" : "All measurements are in inches",
+    "field_length" : 54.0,
+    "field_width" : 27.0,
+    "switch_fence_height" : 18.75,
+    "switch_wall_height" : 3.5,
+    "switch_plate_height_when_balanced" : 9.0,
+    "scale_wall_height" : 3.5,
+    "scale_plate_height_when_balanced" : 60.0,
+    "distance_to_switch" : 121.0,
+    "distance_to_scale" : 300.0,
+    "distance_to_line1" : 120.0,
+    "platform_height" : 3.5,
+    "exchange_height" : 16.25,
+    "exchange_width" : 21.0,
+    "exchange_offset_from_ground" : 1.75
+}

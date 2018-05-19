@@ -1,0 +1,18 @@
+{
+  "IMU_DriveSysEncoders" : {
+    "IMU": {
+      "name" : "NavxMXP",
+      "porttype": "kMXP",
+      "angleTolerance": 3.0,
+      "Kp" : 0.2
+    },
+    "DriveSysParameters" : {
+      "TurningMaxSpeed" : 0.3,
+      "StraightLineMaxSpeed" : 0.5,
+      "DriveSysTeleOpMaxSpeed" : 1.0
+    }
+  },
+  "none" : {
+
+  }
+}

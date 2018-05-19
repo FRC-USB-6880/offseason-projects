@@ -1,0 +1,7 @@
+{
+    "6inch-higrip-wheel-grey" : {
+        "diameter" : 6.0,
+        "Static_CoF" : 0.975,
+        "Durometer" : "77A"
+    }
+}

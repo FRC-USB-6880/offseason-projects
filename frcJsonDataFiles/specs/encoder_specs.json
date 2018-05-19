@@ -1,0 +1,7 @@
+{
+    "E4T-Miniature-Optical-Encoder" : {
+        "CPR" : 360,
+        "PPR" : 1440,
+        "MaxRPM" : 16666
+    }
+}

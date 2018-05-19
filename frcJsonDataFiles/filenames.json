@@ -1,0 +1,14 @@
+{
+    "Comment" : "The file paths given below are the relative to the JsonReader.baseDir",
+    "robotsFile" : "robots.json",
+    "sensorSpecsFile" : "specs/sensor_specs.json",
+    "wheelSpecsFile" : "specs/wheel_specs.json",
+    "encoderSpecsFile" : "specs/encoder_specs.json",
+    "motorSpecsFile" : "specs/motor_specs.json",
+    "attachmentsFile" : "attachments.json",
+    "navigationFile" : "navigation_options.json",
+    "autonomousOptFile" : "autonomous_options.json",
+    "driveTrainsFile" : "drivetrains.json",
+    "autonomousRedDir" : "autonomous/red/",
+    "autonomousBlueDir" : "autonomous/blue/"
+}

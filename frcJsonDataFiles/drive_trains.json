@@ -1,0 +1,116 @@
+{
+    "Comment1" : "PWM-connected motor controllers are identified by the channel number on the roborio",
+    "Comment2" : "CAN-connected motor controllers are identified by the device ID defined using roborio web dashboard",
+    "4VictorSP-1spd-WestCoastDrive" : {
+        "Motor_L1" : {
+            "Controller" : "VictorSP",
+            "MotorType" : "CIM",
+            "Channel" : 0
+        },
+        "Motor_L2" : {
+            "Controller" : "VictorSP",
+            "MotorType" : "CIM",
+            "Channel" : 1
+        },
+        "Motor_R1" : {
+            "Controller" : "VictorSP",
+            "MotorType" : "CIM",
+            "Channel" : 2
+        },
+        "Motor_R2" : {
+            "Controller" : "VictorSP",
+            "MotorType" : "CIM",
+            "Channel" : 3
+        },
+        "gearRatioL" : 10.71,
+        "gearRatioR" : 10.71,
+        "LeftEncoder" : {
+            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderChannels" : [0,1]
+         },
+        "RightEncoder" : {
+            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderChannels" : [2,3]
+         },
+        "wheelType" : "6inch-higrip-wheel-grey"
+    },
+    "CAN-4TalonSRX-2spd-WestCoastDrive" : {
+        "Motor_L1" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 0
+        },
+        "Motor_L2" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 1,
+            "Follower" : true,
+            "LeadController" : "Motor_L1"
+        },
+        "Motor_R1" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 2
+        },
+        "Motor_R2" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 3,
+            "Follower" : true,
+            "LeadController" : "Motor_R1"
+        },
+        "gearRatioL_loSpd" : 15.0,
+        "gearRatioR_loSpd" : 15.0,
+        "gearRatioL_hiSpd" : 5.0,
+        "gearRatioR_hiSpd" : 5.0,
+        "Comment1" : "Need to add pneumatics info for gear shifting",
+        "LeftEncoder" : {
+            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderChannels" : [0,1]
+         },
+        "RightEncoder" : {
+            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderChannels" : [2,3]
+         },
+        "wheelType" : "6inch-higrip-wheel-grey"
+    },
+    "CAN-4TalonSRX-1spd-WestCoastDrive" : {
+        "Motor_L1" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 11,
+            "Follower" : false
+        },
+        "Motor_L2" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 14,
+            "Follower" : false,
+            "LeadController" : "Motor_L1"
+        },
+        "Motor_R1" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 12,
+            "Follower" : false
+        },
+        "Motor_R2" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 13,
+            "Follower" : false,
+            "LeadController" : "Motor_R1"
+        },
+        "gearRatioL" : 10.71,
+        "gearRatioR" : 10.71,
+        "LeftEncoder" : {
+            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderChannels" : [0,1]
+         },
+        "RightEncoder" : {
+            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderChannels" : [2,3]
+         },
+        "wheelType" : "6inch-higrip-wheel-grey"
+    }
+}

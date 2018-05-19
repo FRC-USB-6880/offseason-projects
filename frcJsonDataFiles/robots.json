@@ -1,0 +1,29 @@
+{
+    "2017-offseason-robot" : {
+        "RobotWidth" : 23.0,
+        "RobotLength" : 30.0,
+        "NavXPos" : [0.0, 0.0],
+        "DriveTrain" : "4VictorSP-1spd-WestCoastDrive",
+        "Attachments" : [],
+        "Navigation" : "IMU_DriveSysEncoders",
+        "autonomous_option" : "testing"
+    },
+    "TalonSRX-test-robot" : {
+        "RobotWidth" : 23.0,
+        "RobotLength" : 30.0,
+        "NavXPos" : [0.0, 0.0],
+        "DriveTrain" : "CAN-4TalonSRX-1spd-WestCoastDrive",
+        "Attachments" : [],
+        "Navigation" : "IMU_DriveSysEncoders",
+        "autonomous_option" : "testing"
+    },
+    "2018-robot" : {
+        "RobotWidth" : 23.0,
+        "RobotLength" : 30.0,        
+        "NavXPos" : [0.0, 0.0],
+        "DriveTrain" : "CAN-4TalonSRX-2spd-WestCoastDrive",
+        "Attachments" : [],
+        "Navigation" : "IMU_DriveSysEncoders",
+        "autonomous_option" : "testing"
+    }
+}

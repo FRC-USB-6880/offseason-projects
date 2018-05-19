@@ -1,0 +1,15 @@
+{
+    "CIM" : {
+        "noload_rpm" : 5310,
+        "stallTorque_oz_in" : 343.4,
+        "stallCurrent_amps" : 133,
+        "freeCurrent_amps" : 2.7
+    },
+    "Neverest40" : {
+        "noload_rpm": 129,
+        "CPR" : 1120,
+        "stallTorque_oz_in" : 350,
+        "stallCurrent_amps" : 11.5,
+        "freeCurrent_amps" : 0.4
+    }
+}
