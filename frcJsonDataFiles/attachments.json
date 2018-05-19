@@ -1,0 +1,11 @@
+{
+    "Lift" : {
+        "comment" : "Specify the range of encoder counts that define low, mid, and high lift positions",
+        "liftMotorCANid" : 15, 
+        "liftPos_lowRange" : [0, 7233],
+        "liftPos_midRange" : [7234, 14466],
+        "liftPos_highRange" : [14467, 22000],
+        "spoolDiameter" : 2.0,
+        "openloop_rampTime" : 2.0
+    }
+}

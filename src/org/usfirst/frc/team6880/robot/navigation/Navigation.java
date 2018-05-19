@@ -2,6 +2,7 @@ package org.usfirst.frc.team6880.robot.navigation;
 
 import org.usfirst.frc.team6880.robot.FRCRobot;
 import org.usfirst.frc.team6880.robot.jsonReaders.*;
+import org.usfirst.frc.team6880.robot.util.ClipRange;
 
 
 
@@ -22,12 +23,30 @@ public class Navigation {
 	
 	/**
 	 * This method makes the robot drive facing a target direction
-	 * @param speed The speed for the robot to drive at
+	 * @param speed The speed for the robot to drive at; always a positive number
 	 * @param targetDirection The desired direction for the robot to drive
+	 * @param driveBackwards true if driving backwards; false if driving forwards
 	 */
-	public void driveDirection(double speed, double targetDirection)
+	public void driveDirection(double speed, double targetYaw, boolean driveBackwards)
 	{
-		robot.driveSys.arcadeDrive(speed, gyro_GoStraight_KP * Math.IEEEremainder(targetDirection - gyro.getYaw(), 360));
+	    double error, correction, leftSpeed, rightSpeed;
+	    error = getDegreesToTurn(gyro.getYaw(), targetYaw);
+	    correction = error * gyro_GoStraight_KP / 2;
+	    if (driveBackwards) {
+            leftSpeed = ClipRange.clip(speed-correction, -0.8, 0.8);
+            rightSpeed = ClipRange.clip(speed+correction, -0.8, 0.8);	        
+	    } else {
+	        leftSpeed = ClipRange.clip(speed+correction, -0.8, 0.8);
+	        rightSpeed = ClipRange.clip(speed-correction, -0.8, 0.8);
+	    }
+//        System.out.format("error=%f, correction=%f, leftSpeed=%f, rightSpeed=%f\n",
+//                error, correction, leftSpeed, rightSpeed);
+        if (driveBackwards)
+            robot.driveSys.tankDrive(-leftSpeed, -rightSpeed);
+        else
+            robot.driveSys.tankDrive(leftSpeed, rightSpeed);
+	    
+//		robot.driveSys.arcadeDrive(speed, gyro_GoStraight_KP * Math.IEEEremainder(targetDirection - gyro.getYaw(), 360));
 	}
 
 	//TODO Create driveStraightToDistance()

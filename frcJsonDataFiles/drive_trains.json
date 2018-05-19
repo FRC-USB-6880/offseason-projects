@@ -38,38 +38,40 @@
         "Motor_L1" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
-            "DeviceID" : 0
+            "DeviceID" : 11,
+            "Follower" : false
         },
         "Motor_L2" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
-            "DeviceID" : 1,
+            "DeviceID" : 12,
             "Follower" : true,
             "LeadController" : "Motor_L1"
         },
         "Motor_R1" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
-            "DeviceID" : 2
+            "DeviceID" : 13,
+            "Follower" : false
         },
         "Motor_R2" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
-            "DeviceID" : 3,
+            "DeviceID" : 14,
             "Follower" : true,
             "LeadController" : "Motor_R1"
         },
-        "gearRatioL_loSpd" : 15.0,
-        "gearRatioR_loSpd" : 15.0,
-        "gearRatioL_hiSpd" : 5.0,
-        "gearRatioR_hiSpd" : 5.0,
+        "gearRatioL_loSpd" : 24.0,
+        "gearRatioR_loSpd" : 24.0,
+        "gearRatioL_hiSpd" : 9.07,
+        "gearRatioR_hiSpd" : 9.07,
         "Comment1" : "Need to add pneumatics info for gear shifting",
         "LeftEncoder" : {
-            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderType" : "GreyHill-63R128",
             "encoderChannels" : [0,1]
          },
         "RightEncoder" : {
-            "encoderType" : "E4T-Miniature-Optical-Encoder",
+            "encoderType" : "GreyHill-63R128",
             "encoderChannels" : [2,3]
          },
         "wheelType" : "6inch-higrip-wheel-grey"
@@ -84,20 +86,59 @@
         "Motor_L2" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
+            "DeviceID" : 12,
+            "Follower" : true,
+            "LeadController" : "Motor_L1"
+        },
+        "Motor_R1" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 13,
+            "Follower" : false
+        },
+        "Motor_R2" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
             "DeviceID" : 14,
+            "Follower" : true,
+            "LeadController" : "Motor_R1"
+        },
+        "gearRatioL" : 9.07,
+        "gearRatioR" : 9.07,
+        "LeftEncoder" : {
+            "encoderType" : "GreyHill-63R128",
+            "encoderChannels" : [0,1]
+         },
+        "RightEncoder" : {
+            "encoderType" : "GreyHill-63R128",
+            "encoderChannels" : [2,3]
+         },
+        "wheelType" : "6inch-higrip-wheel-grey"
+    },
+    "CAN-4TalonSRX-1spd-WestCoastDrive_practiceRobot" : {
+        "Motor_L1" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 11,
+            "Follower" : false
+        },
+        "Motor_L2" : {
+            "Controller" : "TalonSRX",
+            "MotorType" : "CIM",
+            "DeviceID" : 12,
             "Follower" : false,
             "LeadController" : "Motor_L1"
         },
         "Motor_R1" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
-            "DeviceID" : 12,
+            "DeviceID" : 13,
             "Follower" : false
         },
         "Motor_R2" : {
             "Controller" : "TalonSRX",
             "MotorType" : "CIM",
-            "DeviceID" : 13,
+            "DeviceID" : 14,
             "Follower" : false,
             "LeadController" : "Motor_R1"
         },

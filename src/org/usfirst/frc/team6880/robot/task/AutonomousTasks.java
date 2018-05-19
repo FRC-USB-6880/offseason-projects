@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 import org.usfirst.frc.team6880.robot.FRCRobot;
 import org.usfirst.frc.team6880.robot.jsonReaders.AutonomousOptionsReader;
 import org.usfirst.frc.team6880.robot.jsonReaders.JsonReader;
-import org.usfirst.frc.team6880.robot.task.*;
+
 
 /**
  * This class maintains the sequence of autonomous tasks to be run.
@@ -25,11 +25,15 @@ public class AutonomousTasks {
     AutonomousOptionsReader configReader;
     
     /**
+     * @param robot
+     * @param autoPos
+     * @param autoOption 
      * 
      */
-    public AutonomousTasks(FRCRobot robot, String autoSelection) {
+    public AutonomousTasks(FRCRobot robot, String autoPos, String autoOption) {
         this.robot = robot;
-        configReader = new AutonomousOptionsReader(JsonReader.autonomousOptFile, autoSelection);
+        configReader = new AutonomousOptionsReader(JsonReader.autonomousOptFile, autoPos, autoOption);
+        System.out.println("frc6880: Autonomous option: " + autoPos + ", " + autoOption);
         tasks = new ArrayList<RobotTask>();
         JSONArray taskArray = configReader.getAllTasks();
 
@@ -38,24 +42,55 @@ public class AutonomousTasks {
         	try{
 	        	JSONObject obj = (JSONObject) taskArray.get(i);
 	        	String key = JsonReader.getKeyIgnoreCase(obj, "name");
-	        	double speed, tolerance;
+	        	double speed, tolerance, targetYaw;
+	        	double power, timeInSec;
+	        	String pos;
+	        	System.out.println("frc6880: Running task "+(String)obj.get(key));
 	        	switch((String)obj.get(key))
 	        	{
 	        		case "MoveDistance":
 	        			key = JsonReader.getKeyIgnoreCase(obj, "distance");
-	        			double dist = (double)obj.get(key);
+	        			double dist = JsonReader.getDouble(obj, key);
 	        			key = JsonReader.getKeyIgnoreCase(obj, "speed");
-	        			speed = (double)obj.get(key);
-	        			tasks.add(new TaskMoveDist(robot, speed, dist));
+	        			speed = JsonReader.getDouble(obj, key);
+	        			key = JsonReader.getKeyIgnoreCase(obj, "targetYaw");
+	        			targetYaw = JsonReader.getDouble(obj, key);
+	        			tasks.add(new TaskMoveDist(robot, speed, dist, targetYaw));
 	        			break;
 	        		case "SetOrientation":
 	        		    key = JsonReader.getKeyIgnoreCase(obj, "targetYaw");
-	        		    double targetYaw = (double)obj.get(key);
+	        		    targetYaw = JsonReader.getDouble(obj, key);
                         key = JsonReader.getKeyIgnoreCase(obj, "speed");
-                        speed = (double)obj.get(key);
+                        speed = JsonReader.getDouble(obj, key);
                         key = JsonReader.getKeyIgnoreCase(obj, "tolerance");
-                        tolerance = (double)obj.get(key);
+                        tolerance = JsonReader.getDouble(obj, key);
                         tasks.add(new TaskSetOrientation(robot, targetYaw, speed, tolerance));
+	        		    break;
+	        		case "LiftForTime":
+	        			key = JsonReader.getKeyIgnoreCase(obj, "power");
+	        			power = JsonReader.getDouble(obj, key);
+	        			key = JsonReader.getKeyIgnoreCase(obj, "time");
+	        			timeInSec = JsonReader.getDouble(obj, key);
+	        			tasks.add(new TaskLiftForTime(robot, power, timeInSec));
+	        			break;
+	        		case "LiftToPos":
+	        		    key = JsonReader.getKeyIgnoreCase(obj, "power");
+                        power = JsonReader.getDouble(obj, key);
+                        key = JsonReader.getKeyIgnoreCase(obj, "pos");
+                        pos = (String) obj.get(key);
+                        key = JsonReader.getKeyIgnoreCase(obj, "tolerance");
+                        tolerance = JsonReader.getDouble(obj, key);
+                        tasks.add(new TaskLiftToPos(robot, power, pos, tolerance));
+                        break;
+	        		case "CubeHandle":
+	        			key = JsonReader.getKeyIgnoreCase(obj, "close");
+	        			boolean close = (boolean)obj.get(key);
+	        			tasks.add(new TaskCubeHandle(robot, close));
+	        			break;
+	        		case "WaitForTime":
+	        		    key = JsonReader.getKeyIgnoreCase(obj, "seconds");
+	        		    double secondsToWait = JsonReader.getDouble(obj, key);
+	        		    tasks.add(new TaskWaitForTime(robot, secondsToWait));
 	        		    break;
 	//        		case "SpinDegrees":
 	//        			key = JsonReader.getKeyIgnoreCase(obj, "angle");

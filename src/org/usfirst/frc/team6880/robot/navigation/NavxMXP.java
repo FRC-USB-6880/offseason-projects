@@ -13,23 +13,44 @@ public class NavxMXP implements Gyro {
 	
 	public NavxMXP(FRCRobot robot)
 	{
-		this.robot = robot;
+	    int numRetries=0;
+	    int maxRetries=200;
+
+	    this.robot = robot;
 		this.navx_device = new AHRS(Port.kMXP);
 		
-		while (!navx_device.isConnected())
+		numRetries = 0;
+		maxRetries = 200;
+		while (!navx_device.isConnected() && (numRetries < maxRetries))
 		{
 			System.out.println("frc6880: navxMXP is not yet connected");
 		    Timer.delay(.02);
+		    numRetries++;
 		}
-        System.out.println("frc6880: navxMXP is connected");
+		if (numRetries < maxRetries)
+		    System.out.println("frc6880: navxMXP is connected");
+		else {
+		    System.err.println("frc6880: Error! navxMXP connection timeout!");
+		    return;
+		}
 		
-		while (navx_device.isCalibrating())
+        numRetries = 0;
+        maxRetries = 200;
+		while (navx_device.isCalibrating() && (numRetries < maxRetries))
 		{
 			System.out.println("frc6880: navxMXP still callibrating");
 			Timer.delay(.02);
+            numRetries++;
 		}
-        System.out.println("frc6880: navxMXP done with calibration");
-    	navx_device.zeroYaw();
+        if (numRetries < maxRetries)
+            System.out.println("frc6880: navxMXP done with calibration");
+        else
+        {
+            System.err.println("frc6880: Error! navxMXP calibration timeout!");
+            return;
+        }
+
+        navx_device.zeroYaw();
 	}
 	
 	// TODO:

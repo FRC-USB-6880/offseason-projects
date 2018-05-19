@@ -45,6 +45,20 @@ public class RobotConfigReader extends JsonReader {
         return (navigationOption);
     }
     
+    public String getAutoPosition()
+    {
+        String autoPos="";
+        try
+        {
+            autoPos = getString(robotObj, "autonomous_position");
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("frc6880: Autonomous position not found for the robot named "+robotName);
+        }
+        return (autoPos);
+    }
+
     public String getAutoOption()
     {
     	String autoOption= "";
@@ -54,7 +68,7 @@ public class RobotConfigReader extends JsonReader {
     	} catch(Exception e)
     	{
     		e.printStackTrace();
-    		System.out.println("frc6880: Autonomous key not found for the robot named "+robotName);
+    		System.out.println("frc6880: Autonomous option not found for the robot named "+robotName);
     	}
     	return autoOption;
     }
@@ -92,6 +106,20 @@ public class RobotConfigReader extends JsonReader {
             e.printStackTrace();
         }
         return (value);
+    }
+    
+    public boolean getDriverStationConfig()
+    {
+    	boolean isTankControl = false;
+    	try
+    	{
+    		isTankControl = getBoolean(robotObj, "TankDriverStationConfig");
+    	} catch(Exception e)
+    	{
+    		System.out.println("frc6880 : getDriverStationConfig();: Could not retrieve the TankDriverStationConfig");
+    		e.printStackTrace();
+    	}
+    	return isTankControl;
     }
     
     public void printForDebug() {

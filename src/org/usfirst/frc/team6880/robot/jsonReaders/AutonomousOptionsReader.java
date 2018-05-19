@@ -10,16 +10,18 @@ import org.json.simple.JSONObject;
 
 public class AutonomousOptionsReader extends JsonReader {
 	public JSONArray tasks;
-    public AutonomousOptionsReader(String filePath, String autonomousOption) {
+    public AutonomousOptionsReader(String filePath, String autoPos, String autoOption) {
 
         super(filePath);
         try {
-            String key = getKeyIgnoreCase(rootObj, autonomousOption);
-            tasks = (JSONArray) rootObj.get(key);
+            String key = getKeyIgnoreCase(rootObj, autoPos);
+            JSONObject jsonObj = (JSONObject) rootObj.get(key);
+            String key2 = getKeyIgnoreCase(jsonObj, autoOption);
+            tasks = (JSONArray) jsonObj.get(key2);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("autonomousOption = " + autonomousOption + ", tasks = " + tasks);
+        System.out.println("autoPos = " + autoPos + ", autoOption = " + autoOption + ", tasks = " + tasks);
     }
     public AutonomousOptionsReader(String filePath){
         super(filePath);

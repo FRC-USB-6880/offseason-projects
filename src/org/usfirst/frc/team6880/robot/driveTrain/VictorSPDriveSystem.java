@@ -25,6 +25,7 @@ public class VictorSPDriveSystem implements DriveSystem {
 	private double wheelDiameter;
 	private double wheelCircumference;
 	private double distancePerCount;
+	private double mult;
 	
 	/*
 	 *  TODO
@@ -64,16 +65,18 @@ public class VictorSPDriveSystem implements DriveSystem {
         int[] encoderChannelsRight = configReader.getEncoderChannels("RightEncoder");
 		rightEnc = new Encoder(encoderChannelsRight[0], encoderChannelsRight[1], true, Encoder.EncodingType.k4X);
 		rightEnc.setDistancePerPulse(distancePerCount);
+		
+		mult = 1.0;
 	}
 	
 	public void tankDrive(double leftSpeed, double rightSpeed)
 	{
-		drive.tankDrive(leftSpeed, rightSpeed);
+		drive.tankDrive(mult*leftSpeed, mult*rightSpeed);
 	}
 	
 	public void arcadeDrive(double speed, double rotationRate)
 	{
-		drive.arcadeDrive(speed, rotationRate);
+		drive.arcadeDrive(mult*speed, mult*rotationRate);
 	}
 	
 	public void resetEncoders()
@@ -85,5 +88,27 @@ public class VictorSPDriveSystem implements DriveSystem {
 	public double getEncoderDist()
 	{
 		return (leftEnc.getDistance() + rightEnc.getDistance()) / 2.0;
+	}
+	public void setLoSpd()
+	{
+	}
+	public void setHiSpd()
+	{
+	}
+	public boolean isMoving()
+	{
+		if(drive.isAlive())
+    		return true;
+    	return false;
+	}
+
+	public Gears getCurGear() {
+		// TODO Auto-generated method stub
+		return Gears.LOW;
+	}
+
+	public void changeMultiplier(double multr) {
+		// TODO Auto-generated method stub
+		this.mult = mult;
 	}
 }

@@ -3,5 +3,14 @@
         "CPR" : 360,
         "PPR" : 1440,
         "MaxRPM" : 16666
+    },
+    "GreyHill-63R128" : {
+        "CPR" : 128,
+        "PPR" : 1440,
+        "MaxRPM" : 16666
+    },
+    "CTRE-MagEncoder" : {
+        "CPR" : 4096,
+        "PPR" : 4096
     }
 }

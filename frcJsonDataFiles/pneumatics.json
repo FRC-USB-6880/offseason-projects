@@ -1,0 +1,13 @@
+{
+    "compressor_CAN_id" : 20,
+    "drivetrain_solenoid" : {
+        "type" : "double",
+        "low-speed" : "A",
+        "high-speed" : "B"
+    },
+    "cube_solenoid" : {
+        "type" : "double",
+        "hold" : "A",
+        "release" : "B"
+    }
+}

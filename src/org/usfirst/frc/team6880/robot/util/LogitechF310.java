@@ -20,8 +20,8 @@ public class LogitechF310 extends Joystick{
 		private static final int BUTTON_B = 1;
 		private static final int BUTTON_X = 2;
 		private static final int BUTTON_Y = 3;
-		private static final int BUTTON_BUMPER_LEFT = 4;
-		private static final int BUTTON_BUMPER_RIGHT = 5;
+		private static final int BUTTON_BUMPER_LEFT = 5;
+		private static final int BUTTON_BUMPER_RIGHT = 6;
 		private static final int BUTTON_BACK = 6;
 		private static final int BUTTON_START = 7;
 		private static final int BUTTON_LEFT_STICK = 8;

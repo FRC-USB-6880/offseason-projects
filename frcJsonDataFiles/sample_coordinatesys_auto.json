@@ -1,0 +1,12 @@
+{
+    "Comment1" : "This file describes the autonomous paths once the coordinate system is implemented",
+    "Comment2" : "One can specify the autonamous path as a series of robot poses",
+    "Comment3" : "The Starting theta is assumed to be 0.0 always",
+	"testing" : {
+	   "starting-pos" : [0.0, 0.0],
+	   "tasks" : [
+          {"name" : "gotoPose", "pose" : [24.0, 0.0, -90.0], "speed" : 0.4, "yawTolerance" : 3.0},
+          {"name" : "gotoPose", "pose" : [24.0, 20.0, 0.0], "speed" : 0.4, "yawTolerance" : 3.0}
+		]
+	}
+}

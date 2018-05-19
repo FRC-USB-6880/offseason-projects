@@ -88,7 +88,7 @@ public class JsonReader {
         return (value);
     }
 
-    public double getDouble(JSONObject obj, String key) {
+    public static double getDouble(JSONObject obj, String key) {
         double value=0.0;
         try {
         	key = getKeyIgnoreCase(obj, key);

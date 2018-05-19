@@ -2,6 +2,7 @@ package org.usfirst.frc.team6880.robot.driveTrain;
 
 import org.usfirst.frc.team6880.robot.FRCRobot;
 import org.usfirst.frc.team6880.robot.jsonReaders.*;
+import org.usfirst.frc.team6880.robot.util.ClipRange;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -26,6 +27,7 @@ public class TalonSRXDriveSystem implements DriveSystem {
 	private double wheelDiameter;
 	private double wheelCircumference;
 	private double distancePerCount;
+	private double mult;
 	
 	/*
 	 *  TODO
@@ -49,12 +51,14 @@ public class TalonSRXDriveSystem implements DriveSystem {
 		wheelCircumference = Math.PI * wheelDiameter;
 		// We will assume that the same encoder is used on both left and right sides of the drive train. 
 		distancePerCount = wheelCircumference / configReader.getEncoderValue("LeftEncoder", "CPR");
-		System.out.format("distancePerCount = %f\n", distancePerCount);
+		System.out.format("frc6880: distancePerCount = %f\n", distancePerCount);
 		
 		// TODO  Use configReader.getChannelNum() method to identify the
 		//   channel numbers where each motor controller is plugged in
 		motorL1 = new WPI_TalonSRX(configReader.getDeviceID("Motor_L1"));
 		motorL2 = new WPI_TalonSRX(configReader.getDeviceID("Motor_L2"));
+		motorL1.setInverted(true);
+		motorL2.setInverted(true);
 		if (configReader.isFollower("Motor_L1"))
 		{
 		    motorL1.follow(motorL2);
@@ -72,6 +76,9 @@ public class TalonSRXDriveSystem implements DriveSystem {
 
 		motorR1 = new WPI_TalonSRX(configReader.getDeviceID("Motor_R1"));
 		motorR2 = new WPI_TalonSRX(configReader.getDeviceID("Motor_R2"));
+		motorR1.setInverted(true);
+		motorR2.setInverted(true);
+
         if (configReader.isFollower("Motor_R1"))
         {
             motorR1.follow(motorR2);
@@ -90,25 +97,41 @@ public class TalonSRXDriveSystem implements DriveSystem {
         drive = new DifferentialDrive(motorLeft, motorRight);
 
         int[] encoderChannelsLeft = configReader.getEncoderChannels("LeftEncoder");
-        System.out.format("Left encoder channels = [%d, %d]\n", encoderChannelsLeft[0], encoderChannelsLeft[1]);
+        System.out.format("frc6880: Left encoder channels = [%d, %d]\n", encoderChannelsLeft[0], encoderChannelsLeft[1]);
         leftEnc = new Encoder(encoderChannelsLeft[0], encoderChannelsLeft[1], false, Encoder.EncodingType.k4X);
 //        leftEnc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-        leftEnc.setDistancePerPulse(distancePerCount);
+        String encoderType;
+        encoderType = configReader.getEncoderType("LeftEncoder");
+        if (encoderType.equals("GreyHill-63R128")) {
+            double gearRatio = configReader.getGearRatio("Left");
+            System.out.println("frc6880: Left gear ratio = " + gearRatio);
+            leftEnc.setDistancePerPulse(distancePerCount / gearRatio);
+        } else {
+            leftEnc.setDistancePerPulse(distancePerCount);            
+        }
         int[] encoderChannelsRight = configReader.getEncoderChannels("RightEncoder");
-        System.out.format("Right encoder channels = [%d, %d]\n", encoderChannelsRight[0], encoderChannelsRight[1]);
+        System.out.format("frc6880: Right encoder channels = [%d, %d]\n", encoderChannelsRight[0], encoderChannelsRight[1]);
         rightEnc = new Encoder(encoderChannelsRight[0], encoderChannelsRight[1], true, Encoder.EncodingType.k4X);
 //        rightEnc = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
-        rightEnc.setDistancePerPulse(distancePerCount);
+        encoderType = configReader.getEncoderType("RightEncoder");
+        if (encoderType.equals("GreyHill-63R128")) {
+            double gearRatio = configReader.getGearRatio("Right");
+            System.out.println("frc6880: Right gear ratio = " + gearRatio);
+            rightEnc.setDistancePerPulse(distancePerCount / gearRatio);
+        } else {
+            rightEnc.setDistancePerPulse(distancePerCount);
+        }
+        mult = 1.0;
 	}
 	
 	public void tankDrive(double leftSpeed, double rightSpeed)
 	{
-		drive.tankDrive(leftSpeed, rightSpeed);
+		drive.tankDrive(mult*leftSpeed, mult*rightSpeed);
 	}
 	
 	public void arcadeDrive(double speed, double rotationRate)
 	{
-		drive.arcadeDrive(speed, rotationRate);
+		drive.arcadeDrive(mult*speed, mult*rotationRate);
 	}
 	
 	public void resetEncoders()
@@ -120,5 +143,26 @@ public class TalonSRXDriveSystem implements DriveSystem {
 	public double getEncoderDist()
 	{
 		return (leftEnc.getDistance() + rightEnc.getDistance()) / 2.0;
+//		return leftEnc.getDistance();
 	}
+	public void setLoSpd()
+	{
+	}
+	public void setHiSpd()
+	{
+	}
+	public boolean isMoving()
+	{
+		if(drive.isAlive())
+    		return true;
+    	return false;
+	}
+	public void changeMultiplier(double mult)
+    {
+    	this.mult = mult;
+    }
+    public Gears getCurGear() {
+	// TODO Auto-generated method stub
+    	return Gears.LOW;
+    }
 }

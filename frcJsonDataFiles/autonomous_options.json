@@ -1,10 +1,407 @@
 {
-	"testing" : [
-		{"name" : "MoveDistance", "speed" : 0.3, "distance" : 12.0},
-		{"name" : "MoveDistance", "speed" : 0.3, "distance" : -12.0},
-		{"name" : "SetOrientation", "speed" : 0.3, "targetYaw" : -90.0, "tolerance" : 3.0}
-	],
-	"testing2" : [
-		{"name" : "MoveForward", "speed" : 0.5, "distance" : 1.0}
-	]
+	"pos1" : {
+        "switchL" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 135.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 15.0, "targetYaw" : 90.0},
+            {"name" : "CubeHandle", "close" : false}		
+        ],
+        "switchL_GotoCube" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 135.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "unfoldArm"},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 15.0, "targetYaw" : 90.0},
+            {"name" : "CubeHandle", "close" : false},       
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : -15.0, "targetYaw" : 90.0},
+            {"name" : "foldArm"},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "low", "tolerance" : 0.1},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 60.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 36.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 6.0, "targetYaw" : 180.0}            
+        ],
+        "switchL_test" : [
+        	{"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0}
+        ],
+        "scaleL" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleL_Backoff" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 90.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -12.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : -144.0, "targetYaw" : 0.0}
+        ],
+        "scaleL_switchL" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 8.0, "targetYaw" : 90.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -8.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},            
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : 180.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 40.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 6.0, "targetYaw" : 180.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "mid", "tolerance" :  0.1},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleL_GotoCube" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 8.0, "targetYaw" : 90.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -8.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},            
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : 180.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 40.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 6.0, "targetYaw" : 180.0}
+        ],
+        "scaleL_test" : [
+        	{"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.1}
+        ],
+        "scaleR" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 230.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 210.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 64.0, "targetYaw" : 180.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : -90.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleR_switchR" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 230.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 200.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 36.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "unfoldArm"},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 28.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -28.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 36.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleR_GotoCube" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 230.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 200.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 36.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "unfoldArm"},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 28.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -28.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 36.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleR_test" : [
+        	{"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0}
+        ],
+        "crossTheLine" : [
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 170.0, "targetYaw" : 0.0}
+        ],
+        "crossTheLine_test" : [
+        	{"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+        	{"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0}
+        ]
+    },
+    "pos2" : {
+        "switchL" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -45.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : -45.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 30.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "switchL_test" : [
+        	{"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0}
+        ],
+        "switchR" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 45.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : 45.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 30.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "switchR_test" : [
+        	{"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0}
+        ],
+        "crossTheLine" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftForTime", "power" : 1.0, "time" : 1.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -45.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : -45.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 30.0, "targetYaw" : 0.0}
+        ],
+        "crossTheLine_test" : [
+        	{"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+        	{"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0}
+        ]
+    },
+    "pos3" : {
+        "switchR" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 135.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 15.0, "targetYaw" : -90.0},
+            {"name" : "CubeHandle", "close" : false}		
+        ],
+        "switchR_GotoCube" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 135.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "unfoldArm"},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 15.0, "targetYaw" : -90.0},
+            {"name" : "CubeHandle", "close" : false},       
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : -15.0, "targetYaw" : -90.0},
+            {"name" : "foldArm"},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "low", "tolerance" : 0.1},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 60.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 36.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 6.0, "targetYaw" : 180.0}            
+        ],
+        "switchR_test" : [
+        	{"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0}
+        ],
+        "scaleR" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 10.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.6, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "CubeHandle", "close" : false}		
+        ],
+        "scaleL_switchL" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 230.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 200.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 36.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "unfoldArm"},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 28.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -28.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 36.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleL_GotoCube" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 230.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 200.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 36.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "unfoldArm"},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 28.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -28.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 1.0, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 36.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleR_Backoff" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : -90.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -12.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : -144.0, "targetYaw" : 0.0}
+        ],
+        "scaleR_GotoCube" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 8.0, "targetYaw" : -90.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -8.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},            
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : 180.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 40.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 6.0, "targetYaw" : 180.0}
+        ],
+        "scaleR_switchR" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 290.0, "targetYaw" : 0.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.05},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 22.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 8.0, "targetYaw" : -90.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : false},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : -8.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "low", "tolerance" : 0.05},
+            {"name" : "foldArm"},            
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 84.0, "targetYaw" : 180.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 40.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 180.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 6.0, "targetYaw" : 180.0},
+            {"name" : "unfoldArm"},
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "mid", "tolerance" :  0.1},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 180.0},
+            {"name" : "CubeHandle", "close" : false}
+        ],
+        "scaleR_test" : [
+        	{"name" : "LiftToPos", "power" : 1.0, "pos" : "mid", "tolerance" : 0.1},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 90.0, "tolerance" : 3.0},
+        	{"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0}
+        ],
+        "crossTheLine" : [
+            {"name" : "MoveDistance", "speed" : 0.7, "distance" : 230.0, "targetYaw" : 0.0}
+        ],
+        "crossTheLine_test" : [
+        	{"name" : "MoveDistance", "speed" : 0.4, "distance" : 12.0, "targetYaw" : 0.0},
+        	{"name" : "MoveDistance", "speed" : 0.4, "distance" : -12.0, "targetYaw" : 0.0}
+        ]
+    },
+    "pos_test" : {
+        "testing" : [
+            {"name" : "LiftToPos", "power" : 0.5, "pos" : "high", "tolerance" : 0.1}
+        ],
+        "testing1" : [
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 40.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.3, "targetYaw" : -90.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 30.0, "targetYaw" : -90.0},
+            {"name" : "SetOrientation", "speed" : 0.3, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.4, "distance" : 30.0, "targetYaw" : 0.0}
+        ],
+        "testing2" : [
+            {"name" : "MoveForward", "speed" : 0.5, "distance" : 1.0}
+        ],
+        "pos1l_old" : [
+            {"name" : "CubeHandle", "close" : true},
+            {"name" : "LiftForTime", "power" : 1.0, "time" : 1.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 12.0, "targetYaw" : 0.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 30.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 80.0, "targetYaw" : 30.0},
+            {"name" : "SetOrientation", "speed" : 0.4, "targetYaw" : 0.0, "tolerance" : 3.0},
+            {"name" : "MoveDistance", "speed" : 0.5, "distance" : 18.0, "targetYaw" : 0.0},
+            {"name" : "CubeHandle", "close" : false}		
+        ]
+    }
 }
