@@ -96,6 +96,29 @@ public class FRCRobot {
 	public void initTeleOp()
 	{
 		driveSys.setLoSpd();
+		Thread driveThread = new Thread(() -> {
+			while(!Thread.interrupted()){
+				driveSys.arcadeDrive(-gamepad1.leftStickY(), gamepad1.rightStickX());
+				if(gamepad1.rightBumper())
+					driveSys.setHiSpd();
+				else if (gamepad1.leftBumper())
+					driveSys.setLoSpd();
+			}
+		});
+
+		Thread attachmentsThread = new Thread(() -> {
+			while(!Thread.interrupted()){
+				if(gamepad2.dpadDown())
+					cubeHandler.grabCube();
+				else if(gamepad2.dpadUp())
+					cubeHandler.releaseCube();
+				
+				lift.moveWithPower(-gamepad2.rightStickY());
+			}
+		});
+
+		driveThread.start();
+		attachmentsThread.start();
 	}
 	
 	public void runTeleOp()
@@ -103,17 +126,6 @@ public class FRCRobot {
 		//TODO: Map controller sticks to drive system
 		//Possible: map misc. controller buttons to tasks?
 		stateMachine.loop();
-		driveSys.arcadeDrive(-gamepad1.leftStickY(), gamepad1.rightStickX());
-		if(gamepad1.rightBumper())
-			driveSys.setHiSpd();
-		else if (gamepad1.leftBumper())
-			driveSys.setLoSpd();
-		if(gamepad2.dpadDown())
-	    	cubeHandler.grabCube();
-	    else if(gamepad2.dpadUp())
-	    	cubeHandler.releaseCube();
-		
-		lift.moveWithPower(-gamepad2.rightStickY());
 	    
 	}
 	
